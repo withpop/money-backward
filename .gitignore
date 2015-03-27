@@ -15,3 +15,11 @@ server.pid
 *.eml
 /dist/
 .cache
+/.idea
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+activator
+activator.bat
+activator-launch-1.2.10.jar

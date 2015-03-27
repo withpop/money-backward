@@ -1,0 +1,24 @@
+@import "lib/bootstrap/less/bootstrap.less";
+
+header {
+	nav {
+		&.affix-top{
+			position: fixed;
+	    	width: 100%;
+			top:-100px;
+		    transition: top 0.5s;
+		    -webkit-transition: top 0.2s; /* Safari */
+		}
+	
+		&.affix{
+			position: fixed;
+		    width: 100%;
+		    top: 0;
+		    opacity:0.85;
+		    transition: top 1s;
+		    z-index: 1000;
+		    -webkit-transition: top 1s; /* Safari */
+		}
+	}
+}
+

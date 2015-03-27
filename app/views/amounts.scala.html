@@ -1,0 +1,34 @@
+@(hists: Seq[models.Tables.HistoryRow])
+
+@main("amounts") {
+<div class="row">
+    <div class="col-md-12">
+	<table class="table">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>date</th>
+			<th>datatype</th>
+			<th>datagroup</th>
+			<th>account</th>
+			<th>amount</th>
+		</tr>
+	</thead>
+	<tbody>
+	@for(h <- hists){
+		<tr>
+			<td>@h.id</td>
+			<td>@h.historyDate</td>
+			<td>@h.dataType</td>
+			<td>@h.dataGroup</td>
+			<td>@h.account</td>
+			<td>@h.amount</td>
+		</tr>
+	}	
+	</tbody>
+	
+	</table>
+	
+    </div>
+    </div>
+}
