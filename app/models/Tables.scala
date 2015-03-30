@@ -13,10 +13,12 @@ trait Tables {
     case object Deposit extends HistoryType("Deposit")
     case object InvestmentAmount extends HistoryType("InvestmentAmount")
     case object Withdrawal extends HistoryType("Withdrawal")
+    case object CreditPayment extends HistoryType("CreditPayment")
   }
   
   case class HistoryRow(
       id: Long,
+      detail: String,
       historyDate: DateTime, 
       dataType: String, 
       dataGroup: Int, 
@@ -25,13 +27,14 @@ trait Tables {
   
   class History(tag: Tag) extends Table[HistoryRow](tag, "History") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
+    def detail = column[String]("detail")
     def historyDate = column[DateTime]("historyDate")
     def dataType = column[String]("dataType")
     def dataGroup = column[Int]("dataGroup")
     def account = column[String]("account")
     def amount = column[BigDecimal]("amount")
     
-    def * = (id, historyDate, dataType, dataGroup, account, amount) <> (HistoryRow.tupled, HistoryRow.unapply _)
+    def * = (id, detail, historyDate, dataType, dataGroup, account, amount) <> (HistoryRow.tupled, HistoryRow.unapply _)
     
   }
   

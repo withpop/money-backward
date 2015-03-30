@@ -2,12 +2,27 @@
 
 @main("amounts") {
 <div class="row">
+	<script type="text/javascript">
+	$(function(){
+		$.ajax({url: "/json/assets",
+		    dataType: "json"})
+		 .done(function(data, sts){
+			        var ctx = $("#assetsLine")[0].getContext("2d");
+				    var myNewChart = new Chart(ctx).Line(data, {});
+			    });
+	});
+	</script>
+
+	<div class ="col-md-12">
+		<canvas id="assetsLine" width="818" height="409" style="width: 818px; height: 409px;"></canvas>
+	</div>
     <div class="col-md-12">
 	<table class="table">
 	<thead>
 		<tr>
 			<th>id</th>
 			<th>date</th>
+			<th>detail</th>
 			<th>datatype</th>
 			<th>datagroup</th>
 			<th>account</th>
@@ -18,15 +33,15 @@
 	@for(h <- hists){
 		<tr>
 			<td>@h.id</td>
-			<td>@h.historyDate</td>
+			<td>@h.historyDate.toString("yyyy年MM月dd日")</td>
+			<td>@h.detail</td>
 			<td>@h.dataType</td>
 			<td>@h.dataGroup</td>
 			<td>@h.account</td>
-			<td>@h.amount</td>
+			<td>@java.text.NumberFormat.getCurrencyInstance.format(h.amount)</td>
 		</tr>
 	}	
 	</tbody>
-	
 	</table>
 	
     </div>

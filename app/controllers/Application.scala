@@ -17,7 +17,6 @@ object Application extends Controller {
   
   def amounts = Action {
     play.api.db.slick.DB.withSession{ implicit session =>
-      History += HistoryRow(0, new DateTime(), "type", 1, "shinsei", 11.0)
       Ok(views.html.amounts(History.list))
     }
   }
@@ -41,10 +40,17 @@ object Application extends Controller {
     
     Ok(views.html.index("Your new application is ready."))
   }
-  
-  def jdbctest = Action {
+ 
+  def addTestData = Action {
     play.api.db.slick.DB.withSession{ implicit session =>
-      History += HistoryRow(0, new DateTime(), "type", 1, "shinsei", 11.0)
+      History += HistoryRow(0, "", new DateTime(2015, 3, 1, 0, 0, 0), HistoryType.TotalAmount.code, 1, "shinsei", 10000.0)
+      History += HistoryRow(0, "", new DateTime(2015, 3, 1, 0, 0, 0), HistoryType.InvestmentAmount.code, 1, "shinsei", 20000.0)
+      History += HistoryRow(0, "食品", new DateTime(2015, 3, 2, 0, 0, 0), HistoryType.CreditPayment.code, 1, "jcb", 1000.0)
+      History += HistoryRow(0, "", new DateTime(2015, 3, 3, 0, 0, 0), HistoryType.Deposit.code, 1, "shinsei", 2000.0)
+      History += HistoryRow(0, "", new DateTime(2015, 3, 3, 0, 0, 0), HistoryType.Withdrawal.code, 1, "shinsei", 1000.0)
+      History += HistoryRow(0, "", new DateTime(2015, 3, 4, 0, 0, 0), HistoryType.TotalAmount.code, 1, "shinsei", 11000.0)
+      History += HistoryRow(0, "", new DateTime(2015, 3, 5, 0, 0, 0), HistoryType.Withdrawal.code, 1, "shinsei", 2000.0)
+      History += HistoryRow(0, "", new DateTime(2015, 3, 6, 0, 0, 0), HistoryType.InvestmentAmount.code, 1, "shinsei", 20010.0)
       Ok(views.html.amounts(History.list))
     }
   }

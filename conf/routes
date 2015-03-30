@@ -11,8 +11,9 @@ GET		/item-setting				controllers.Application.setting
 GET		/start-fetch				controllers.Application.fetch
 
 GET		/webtest					controllers.Application.webtest
-GET		/jdbc						controllers.Application.jdbctest
+GET		/testdata					controllers.Application.addTestData
 
+GET		/json/assets				controllers.JsonData.assets
 
 
 
