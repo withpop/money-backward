@@ -15,6 +15,7 @@ libraryDependencies ++= Seq(
   "org.fluentlenium" % "fluentlenium-core" % "0.10.3",
   "com.typesafe.slick" %% "slick" % "2.1.0",
   "com.typesafe.play" %% "play-slick" % "0.8.1",
+  "org.jsoup" % "jsoup" % "1.8.1",
   "joda-time" % "joda-time" % "2.4",
   "org.joda" % "joda-convert" % "1.6",
   "com.github.tototoshi" %% "slick-joda-mapper" % "1.2.0",

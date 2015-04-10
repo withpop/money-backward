@@ -8,8 +8,13 @@ import scala.slick.driver.H2Driver.simple._
 import com.github.tototoshi.slick.H2JodaSupport._
 import models.Tables._
 import play.api.Play.current
+import core.Scraping
 
 object Application extends Controller {
+  
+  def jsoup = Action{
+    Ok(Scraping.test).as("text/plain")
+  }
   
   def index = Action {
     Redirect("/amounts");
